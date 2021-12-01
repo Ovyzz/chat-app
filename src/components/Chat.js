@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import Logout from "./Logout";
 import {database} from "./firebase";
 import SendMsg from "./SendMsg";
+import ShowMsg from "./ShowMsg";
 
 function Chat() {
     const [msg, setMsg] = useState([]);
@@ -14,13 +15,8 @@ function Chat() {
     return (
         <div>
             <Logout/>
-            {msg.map(({id, text, photoURL, displayName}) =>(
-                <div key={id}>
-                    <img src={photoURL} alt="Avatar"/>
-                    <p>{displayName} : {text}</p>
-                </div>
-            ))}
-            <SendMsg />
+            <ShowMsg msg={msg}/>
+            <SendMsg/>
         </div>
     );
 }
